@@ -2,6 +2,39 @@
 
 All notable changes to CHKT are documented in this file.
 
+## 2.0.0 - 2026-07-28
+
+### Changed
+- Full visual redesign around Material Design 3 (Material You),
+  built on the app's existing brand blue. No behaviour changed —
+  cross-device sync, click-to-edit tasks, the two-step delete
+  confirmation, and the automatic midnight colour rollover all work
+  exactly as before.
+- The header is now a centred top app bar with the logo, the "CHKT"
+  title, the tagline, and a sun/moon icon button for the theme toggle
+  (previously a text link in the footer).
+- Add-task row uses Material outlined text fields and a filled pill
+  "Add" button with a leading icon.
+- Tasks render as Material filled cards with tonal surfaces,
+  elevation, and a hover state layer; the coloured left border still
+  signals urgency.
+- Due-date badges are now Material chips with a leading urgency dot;
+  the exact urgency colours (overdue/today/soon/later) are unchanged.
+- Checkboxes are Material checkboxes; the delete control is a Material
+  icon button (trash) that morphs into a filled error-coloured
+  "Delete" button on the confirming step.
+- Toasts are restyled as Material snackbars; footer actions are
+  Material text buttons.
+- Added Material touch ripples on interactive controls, respecting
+  `prefers-reduced-motion`.
+- Dark theme uses proper MD3 dark surfaces and the lighter primary/
+  error tones for correct contrast on dark backgrounds.
+
+### Notes
+- Still zero external dependencies at runtime: Inter remains
+  self-hosted, no Google Fonts or other CDN requests. Ripples and the
+  theme icons are inline SVG/CSS.
+
 ## 1.9.0 - 2026-07-22
 
 ### Added

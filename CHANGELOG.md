@@ -2,6 +2,16 @@
 
 All notable changes to CHKT are documented in this file.
 
+## 2.0.4 - 2026-07-29
+
+### Fixed
+- Service worker now serves the page (index.html) network-first instead
+  of cache-first, so UI updates appear immediately on every device when
+  online, falling back to the cached copy only when offline. Previously
+  a cached copy could keep showing an old layout across reloads/devices
+  after an update. Static icons/manifest are still served cache-first.
+  Cache bumped to `chkt-cache-v3`.
+
 ## 2.0.3 - 2026-07-29
 
 ### Changed

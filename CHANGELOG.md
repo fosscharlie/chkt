@@ -2,6 +2,18 @@
 
 All notable changes to CHKT are documented in this file.
 
+## 2.0.1 - 2026-07-28
+
+### Changed
+- Date badges are now neutral chips instead of colour-filled ones.
+  The task card's coloured left edge already signals urgency, so the
+  date no longer repeats that colour — the badge stays quiet and the
+  edge is the single urgency cue. Urgency text ("Nd overdue", "Due
+  today", etc.) is unchanged.
+- Reduced the height of each task row so more fit on screen: tighter
+  card padding and content spacing, slightly smaller task text, and
+  more compact (34px) checkbox and delete targets.
+
 ## 2.0.0 - 2026-07-28
 
 ### Changed

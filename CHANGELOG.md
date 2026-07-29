@@ -2,6 +2,14 @@
 
 All notable changes to CHKT are documented in this file.
 
+## 2.0.2 - 2026-07-29
+
+### Fixed
+- On narrow (mobile) screens the "What needs to be done?" field
+  rendered far too tall. In the single-column mobile layout the input's
+  `flex: 1 1 220px` basis applied to the vertical axis, forcing a
+  220px-tall box; it's now reset to normal single-line height.
+
 ## 2.0.1 - 2026-07-28
 
 ### Changed

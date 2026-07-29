@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chkt-cache-v2';
+const CACHE_NAME = 'chkt-cache-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -40,6 +40,31 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // The page itself (navigations / index.html) is network-first: always
+  // fetch the newest HTML when online so UI updates appear immediately on
+  // every device, and fall back to the cached copy only when offline.
+  // Otherwise the previous cache-first strategy could keep showing a stale
+  // layout across reloads and devices.
+  const isHTML = event.request.mode === 'navigate' ||
+                 url.pathname === '/' ||
+                 url.pathname.endsWith('/index.html');
+  if (isHTML) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Other static assets (icons, manifest) rarely change: serve from cache
+  // for speed, and refresh the cached copy in the background.
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)

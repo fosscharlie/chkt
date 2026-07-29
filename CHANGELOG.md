@@ -2,6 +2,17 @@
 
 All notable changes to CHKT are documented in this file.
 
+## 2.0.3 - 2026-07-29
+
+### Changed
+- Removed the "A stupidly simple todo list" tagline from the header;
+  the header is now just the logo and the CHKT title.
+- Moved the light/dark theme toggle out of the header to the footer,
+  inline next to Export.
+- On mobile, the due-date field and the Add button now share a single
+  row (beneath the task input) instead of each taking its own
+  full-width row.
+
 ## 2.0.2 - 2026-07-29
 
 ### Fixed
